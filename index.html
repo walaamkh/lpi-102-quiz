@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LPI 102 Quiz</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    .question h3 { margin-top: 0; }
+    .answers input { margin-right: 10px; }
+    #submit { padding: 10px 20px; margin-top: 20px; }
+    #result { font-weight: bold; font-size: 1.2em; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>LPI 102 Practice Quiz</h1>
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. Which command is used to set the hostname of the local system?</h3>
+      <div class="answers">
+        <label><input type="radio" name="q1" value="0"> hostname</label><br>
+        <label><input type="radio" name="q1" value="0"> hostctl</label><br>
+        <label><input type="radio" name="q1" value="1"> hostnamectl</label><br>
+        <label><input type="radio" name="q1" value="0"> sethost</label><br>
+        <label><input type="radio" name="q1" value="0"> hostmanager</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>2. What DNS tool provides both query and response details?</h3>
+      <div class="answers">
+        <label><input type="radio" name="q2" value="0"> hostname</label><br>
+        <label><input type="radio" name="q2" value="0"> nslookup</label><br>
+        <label><input type="radio" name="q2" value="1"> dig</label><br>
+        <label><input type="radio" name="q2" value="0"> pingdns</label><br>
+        <label><input type="radio" name="q2" value="0"> dnsq</label>
+      </div>
+    </div>
+
+    <button type="button" id="submit">Submit</button>
+    <div id="result"></div>
+  </form>
+
+  <script>
+    document.getElementById("submit").addEventListener("click", function () {
+      const form = document.getElementById("quizForm");
+      const answers = form.querySelectorAll("input[type=radio]:checked");
+      let score = 0;
+      answers.forEach(ans => { if (ans.value === "1") score++; });
+      document.getElementById("result").innerText = "You scored " + score + " out of 2.";
+    });
+  </script>
+</body>
+</html>
